@@ -16,10 +16,40 @@ ROOT_DIR = _resolve_root()
 DATA_DIR = ROOT_DIR / "data"
 DB_PATH = DATA_DIR / "words.db"
 CACHE_DIR = DATA_DIR / "cache"
+SETTINGS_PATH = DATA_DIR / "settings.json"
 
-# Edge TTS 音色（中等语速由 rate 控制）
+# Edge TTS 默认音色（可被 settings.json 覆盖）
 VOICE_EN = "en-US-JennyNeural"
 VOICE_ZH = "zh-CN-XiaoxiaoNeural"
+
+
+def load_settings() -> dict:
+    """读取用户设置（声音、等）。文件不存在时返回默认值。"""
+    import json
+
+    default = {
+        "voice_en": VOICE_EN,
+        "voice_zh": VOICE_ZH,
+    }
+    try:
+        if SETTINGS_PATH.is_file():
+            with open(SETTINGS_PATH, "r", encoding="utf-8") as f:
+                merged = {**default, **json.load(f)}
+                return merged
+    except Exception:
+        pass
+    return dict(default)
+
+
+def save_settings(partial: dict) -> None:
+    """合并写入设置文件。"""
+    import json
+
+    DATA_DIR.mkdir(parents=True, exist_ok=True)
+    cur = load_settings()
+    cur.update(partial)
+    with open(SETTINGS_PATH, "w", encoding="utf-8") as f:
+        json.dump(cur, f, ensure_ascii=False, indent=2)
 # 相对默认语速的百分比，略慢利于学习
 TTS_RATE = "-5%"
 

@@ -21,6 +21,7 @@ a = Analysis(
         "PyQt6.QtMultimedia",
         "edge_tts",
         "pydub",
+        "audioop",
         "sqlite3",
         "uuid",
     ],

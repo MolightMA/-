@@ -1,4 +1,6 @@
 PyQt6>=6.6.0
 edge-tts>=6.1.10
 pydub>=0.25.1
+# Python 3.13+ 标准库移除 audioop；供 pydub 使用（可选但强烈推荐）
+audioop-lts>=0.2.1
 requests>=2.31.0
