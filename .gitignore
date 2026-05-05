@@ -1,0 +1,49 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+*.egg
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# 临时文件
+*.tmp
+*.temp
+.DS_Store
+
+# 打包产物
+*.zip
+*.tar.gz
+
+# 索引文件（运行时生成）
+index_store.npy
+index_meta.npy
+
+# CodeBuddy
+.codebuddy/
+
+# 本地上传
+uploads/
+
+# 本地打包备份
+打包上传/
+
+# 前端依赖
+node_modules/
+
+# 解压临时目录
+unpack_1/
+unpack_2/
+unpack_3/
+
+# Workbuddy 本地数据
+.workbuddy/

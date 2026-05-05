@@ -1,0 +1,4 @@
+PyQt6>=6.6.0
+edge-tts>=6.1.10
+pydub>=0.25.1
+requests>=2.31.0
